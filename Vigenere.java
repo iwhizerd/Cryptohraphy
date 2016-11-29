@@ -38,19 +38,34 @@ public class Vigenere {
         }return sb.toString();
     }
     static String decode(String s, String password) {
-        return null;
 
+        StringBuilder sb = new StringBuilder();
 
+        sb.append(normalize(s));
 
+        password = normalize(password);
 
+        int posicio = 0;
 
+        //Bucle que s'encarrega de codificar el string amb la password.
+        for (int i = 0; i < sb.length(); i++) {
+            int r = sb.charAt(i) - (password.charAt(posicio) - 64);
 
+            if (sb.charAt(i) >= 'A' && sb.charAt(i) <= 'Z') {
+                //Aixo els que ens fara ens mirarnos si r que es la suma del caracter i delta supera els valors possibles
+                posicio++;
+                while (r < 'A') {
+                    r += 26;
+                }
+                if (posicio == password.length()) {
+                    posicio = 0;
+                }
+                sb.setCharAt(i, (char) r);
+            }
+        }
+            return sb.toString();
 
-
-
-
-
-    }
+        }
     static String normalize(String s){
 
         StringBuilder sb = new StringBuilder();

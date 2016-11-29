@@ -69,7 +69,7 @@ public class Caesar {
 
         for (int i = 0;  i < 26 ; i++) {
           s2 = decypher(s , i);
-        if (s2.contains(" EL ") || s2.contains(" DE ") || s2.contains(" LA ") || s2.contains(" DE ") || s2.contains(" SE "))
+        if (s2.contains(" EL ") || s2.contains(" DE ") || s2.contains(" LA ") || s2.contains(" SE "))
             break;
         }
         return s2;

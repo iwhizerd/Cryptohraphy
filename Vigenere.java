@@ -1,15 +1,17 @@
-
+import java.text.Normalizer;
 
 public class Vigenere {
 
     static String encode(String s, String password) {
         StringBuilder sb = new StringBuilder();
-        sb.append(s.toUpperCase());
 
 
-        password = password.toUpperCase();
+        sb.append(normalize(s));
 
-        //Bucle que ens ficara el valor de cada lletra de la password dins un array.
+
+        password = normalize(password);
+
+        //Bucle que s'encarrega de codificar el string amb la password.
 
         int posicio = 0;
         for (int i = 0; i < sb.length(); i++) {
@@ -31,6 +33,32 @@ public class Vigenere {
     }
     static String decode(String s, String password) {
         return null;
+    }
+    static String normalize(String s){
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(s.toUpperCase());
+
+        for (int i = 0; i <sb.length() ; i++) {
+
+            if (sb.charAt(i) == 'Ó' ||  sb.charAt(i) == 'Ò'){
+                sb.setCharAt(i, 'O');
+            }
+            if (sb.charAt(i) == 'É' ||  sb.charAt(i) == 'È'){
+                sb.setCharAt(i, 'E');
+            }
+            if (sb.charAt(i) == 'Ú' ||  sb.charAt(i) == 'Ù'){
+                sb.setCharAt(i, 'U');
+            }
+            if (sb.charAt(i) == 'Í' ||  sb.charAt(i) == 'Ì'){
+                sb.setCharAt(i, 'I');
+            }
+            if (sb.charAt(i) == 'Á' ||  sb.charAt(i) == 'À'){
+                sb.setCharAt(i, 'A');
+            }
+        }
+
+        return sb.toString();
     }
 }
 

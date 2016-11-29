@@ -3,17 +3,23 @@ import java.text.Normalizer;
 public class Vigenere {
 
     static String encode(String s, String password) {
+
+        //Definirem un String Builder on ficarem el string que ens passin.
         StringBuilder sb = new StringBuilder();
 
+        //Hem creat una funció que el que fa es mirar si tenim qualque lletra accentuada i mos la converteix amb
+        //una sense accent.
 
+        //Ficam el string
         sb.append(normalize(s));
 
-
+        //També ho aplicam a la password en cas que tengui accents.
         password = normalize(password);
 
-        //Bucle que s'encarrega de codificar el string amb la password.
-
+        //Definim una variable que emplearem per mourernos per dins de la password.
         int posicio = 0;
+
+        //Bucle que s'encarrega de codificar el string amb la password.
         for (int i = 0; i < sb.length(); i++) {
             int r = sb.charAt(i) + (password.charAt(posicio) - 64);
 
@@ -33,6 +39,17 @@ public class Vigenere {
     }
     static String decode(String s, String password) {
         return null;
+
+
+
+
+
+
+
+
+
+
+
     }
     static String normalize(String s){
 

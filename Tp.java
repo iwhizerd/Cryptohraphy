@@ -21,24 +21,23 @@ public class Tp {
 
         int posicio = 0;
 
-        for (int x = 0; x < arr[0].length; x++) {
+        for (int x = 0; x < arr.length; x++) {
             System.out.println("----------------------");
-            for (int y = 0; y < arr.length; y++) {
+            for (int y = 0; y < arr[0].length; y++) {
                 if (posicio >= s.length()) {
-                    arr[y][x] = '*';
+                    arr[x][y] = '*';
                     //posicio++;
-                    System.out.println(arr[y][x]);
+                    System.out.println(arr[x][y]);
                     break;
                 }
-                arr[y][x] = s.charAt(posicio);
+                arr[x][y] = s.charAt(posicio);
                 posicio++;
                 // if (posicio > s.length()){
                 //   arr [y][x] = '*';
                 // posicio++;
                 // }
-                System.out.println(arr[y][x]);
+                System.out.println(arr[x][y]);
             }
         }
-        for
     }
 }

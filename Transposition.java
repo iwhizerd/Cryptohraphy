@@ -4,12 +4,12 @@ public class Transposition {
 
         StringBuilder sb = new StringBuilder();
 
-        int columnes = (int) (Math.ceil(s.length() / (double) dim));
-        //int columnes = (s.length() / dim);
+        //int columnes = (int) (Math.ceil(s.length() / (double) dim));
+        int columnes = (s.length() / dim);
 
-        //if (columnes % dim != 0) {
-        //   columnes += 1;
-        // }
+        if (s.length() % dim != 0) {
+            columnes += 1;
+        }
 
         char arr [][] = new char [columnes][dim];
 

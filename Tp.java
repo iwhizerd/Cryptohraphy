@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Tp {
     public static void main(String[] args) {
 
+        StringBuilder sb = new StringBuilder();
+
         Scanner sc = new Scanner(System.in);
 
         String s = sc.nextLine();
@@ -39,5 +41,15 @@ public class Tp {
                 System.out.println(arr[x][y]);
             }
         }
+        for (int a = 0; a < arr[0].length; a++) {
+            for (int b = 0; b < arr.length; b++) {
+                if (arr[b][a] == '*') {
+                    break;
+                }
+                sb.append(arr[b][a]);
+            }
+        }
+        System.out.println(sb);
     }
+
 }

@@ -13,8 +13,10 @@ public class Transposition {
 
         char arr [][] = new char [columnes][dim];
 
+        //Variable per mourernos dins String s.
         int posicio = 0;
 
+        //Bucle que s'encarrega de ficar els valors en fila ex ABCD --> AB,CD
         for (int x = 0; x < arr.length; x++) {
             for (int y = 0; y < arr[0].length; y++) {
                 if (posicio == s.length()) {
@@ -25,8 +27,10 @@ public class Transposition {
                 posicio++;
             }
         }
+        //S'encarrega de pasar l'array a un string
         for (int a = 0; a < arr[0].length; a++) {
             for (char[] anArr : arr) {
+                //Condicional que fica els chars que no siguin el comodi.
                 if (anArr[a] != '*') {
                     sb.append(anArr[a]);
                 }
@@ -36,7 +40,8 @@ public class Transposition {
     }
 
     static String decypher(String s, int dim) {
-        return null;
+
+
     }
 
 

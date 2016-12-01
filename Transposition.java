@@ -20,7 +20,7 @@ public class Transposition {
         for (int x = 0; x < arr.length; x++) {
             for (int y = 0; y < arr[0].length; y++) {
                 if (posicio == s.length()) {
-                    arr[x][y] = '*';
+                    //arr[x][y] = '*';
                     continue;
                 }
                 arr[x][y] = s.charAt(posicio);
@@ -31,7 +31,7 @@ public class Transposition {
         for (int a = 0; a < arr[0].length; a++) {
             for (char[] anArr : arr) {
                 //Condicional que fica els chars que no siguin el comodi.
-                if (anArr[a] != '*') {
+                if (anArr[a] != 0) {
                     sb.append(anArr[a]);
                 }
             }
@@ -57,8 +57,9 @@ public class Transposition {
 
         for (int x = 0; x < arr[0].length; x++) {
             for (int y = 0; y < arr.length; y++) {
+                //Condicional que fa que si arribam a la darrera fila i quan hagi un espai buit ho salti.
                 if (y == arr.length - 1 && x >= (dim - espaisbuits)) {
-                    arr[y][x] = '*';
+                    // arr[y][x] = '*';
                     continue;
                 }
                 arr[y][x] = s.charAt(posicio);
@@ -67,7 +68,7 @@ public class Transposition {
         }
         for (int a = 0; a < arr.length; a++) {
             for (int b = 0; b < arr[0].length; b++) {
-                if (arr[a][b] != '*')
+                if (arr[a][b] != 0)
                     sb.append(arr[a][b]);
             }
         }

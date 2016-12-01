@@ -41,7 +41,37 @@ public class Transposition {
 
     static String decypher(String s, int dim) {
 
+        StringBuilder sb = new StringBuilder();
 
+        int files = s.length() / dim;
+
+        if (s.length() % dim != 0) {
+            files += 1;
+        }
+
+        char arr[][] = new char[files][dim];
+
+        int posicio = 0;
+
+        int espaisbuits = (files * dim) - s.length();
+
+        for (int x = 0; x < arr[0].length; x++) {
+            for (int y = 0; y < arr.length; y++) {
+                if (y == arr.length - 1 && x >= (dim - espaisbuits)) {
+                    arr[y][x] = '*';
+                    continue;
+                }
+                arr[y][x] = s.charAt(posicio);
+                posicio++;
+            }
+        }
+        for (int a = 0; a < arr.length; a++) {
+            for (int b = 0; b < arr[0].length; b++) {
+                if (arr[a][b] != '*')
+                    sb.append(arr[a][b]);
+            }
+        }
+        return sb.toString();
     }
 
 

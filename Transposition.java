@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class Transposition {
     static String cypher(String s, int dim) {
@@ -77,10 +79,71 @@ public class Transposition {
 
 
     static String cypher(String s, String key) {
-        return null;
+
+        StringBuilder sb = new StringBuilder();
+
+        int files = s.length() / key.length();
+
+        if (s.length() % key.length() != 0) {
+            files += 1;
+        }
+
+        int ordenate[] = index(s, key);
+
+        char arr[][] = new char[files][key.length()];
+
+        //Variable per mourernos dins String s.
+        int posicio = 0;
+
+        //Bucle que s'encarrega de ficar els valors en fila ex ABCD --> AB,CD
+        for (int x = 0; x < arr.length; x++) {
+            for (int y = 0; y < arr[0].length; y++) {
+                if (posicio == s.length()) {
+                    //arr[x][y] = '*';
+                    continue;
+                }
+                arr[x][y] = s.charAt(posicio);
+                posicio++;
+            }
+        }
+
+        //S'encarrega de pasar l'array a un string
+        for (int a = 0; a < ordenate.length; a++) {
+            for (int b = 0; b < arr.length; b++) {
+                //Condicional que fica els chars que no siguin el comodi.
+                if (arr[ordenate[a]][b] != 0) {
+                    sb.append(arr[ordenate[a]][b]);
+                }
+            }
+        }
+        return sb.toString();
+
+
+
     }
 
     static String decypher(String s, String key) {
         return null;
+    }
+
+    static int[] index(String s, String key) {
+
+        char[] ordenateKey = key.toCharArray();
+
+        int[] ordenateIndex = new int[key.length()];
+
+        Arrays.sort(ordenateKey);
+
+        int count = 0;
+        for (int i = 0; i < key.length(); i++) {
+            for (int j = 0; j < key.length(); j++) {
+                if (ordenateKey[i] == s.charAt(j)) {
+                    ordenateIndex[count] = j;
+                    count++;
+                }
+            }
+
+        }
+        return ordenateIndex;
     }
 }

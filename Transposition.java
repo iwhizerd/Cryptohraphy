@@ -88,7 +88,7 @@ public class Transposition {
             files += 1;
         }
 
-        int ordenate[] = index(s, key);
+        int ordenate[] = index(key);
 
         char arr[][] = new char[files][key.length()];
 
@@ -107,15 +107,18 @@ public class Transposition {
             }
         }
 
+
         //S'encarrega de pasar l'array a un string
-        for (int a = 0; a < ordenate.length; a++) {
-            for (int b = 0; b < arr.length; b++) {
+        //  for (int a = 0; a < ordenate.length; a++) {
+        //    for (int b = 0; b < arr.length; b++) {
                 //Condicional que fica els chars que no siguin el comodi.
-                if (arr[ordenate[a]][b] != 0) {
-                    sb.append(arr[ordenate[a]][b]);
-                }
-            }
-        }
+        //      if (arr[ordenate[a]][b] != 0) {
+        //      sb.append(arr[ordenate[a]][b]);
+        //    }
+        //  }
+        // }
+
+
         return sb.toString();
 
 
@@ -126,7 +129,7 @@ public class Transposition {
         return null;
     }
 
-    static int[] index(String s, String key) {
+    static int[] index(String key) {
 
         char[] ordenateKey = key.toCharArray();
 
@@ -137,7 +140,7 @@ public class Transposition {
         int count = 0;
         for (int i = 0; i < key.length(); i++) {
             for (int j = 0; j < key.length(); j++) {
-                if (ordenateKey[i] == s.charAt(j)) {
+                if (ordenateKey[i] == key.charAt(j)) {
                     ordenateIndex[count] = j;
                     count++;
                 }

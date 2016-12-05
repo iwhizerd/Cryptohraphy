@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -11,45 +12,83 @@ public class Tp {
         Scanner sc = new Scanner(System.in);
 
         String s = sc.nextLine();
-        int dim = sc.nextInt();
+        String key = sc.nextLine();
 
-        int columnes = (s.length() / dim);
+        int files = s.length() / key.length();
 
-        if (columnes % dim == 1) {
-            columnes += 1;
+        if (s.length() % key.length() != 0) {
+            files += 1;
         }
 
-        char arr[][] = new char[columnes][dim];
+        int ordenat[] = index(key);
 
+        for (int i = 0; i < ordenat.length; i++) {
+            System.out.println(ordenat[i]);
+        }
+
+        char arr[][] = new char[files][key.length()];
+
+        //Variable per mourernos dins String s.
         int posicio = 0;
 
+        //Bucle que s'encarrega de ficar els valors en fila ex ABCD --> AB,CD
         for (int x = 0; x < arr.length; x++) {
-            System.out.println("----------------------");
+            System.out.println("--------");
             for (int y = 0; y < arr[0].length; y++) {
-                if (posicio >= s.length()) {
-                    arr[x][y] = '*';
-                    //posicio++;
-                    System.out.println(arr[x][y]);
-                    break;
+                if (posicio == s.length()) {
+                    //arr[x][y] = '*';
+                    continue;
                 }
                 arr[x][y] = s.charAt(posicio);
                 posicio++;
-                // if (posicio > s.length()){
-                //   arr [y][x] = '*';
-                // posicio++;
-                // }
-                System.out.println(arr[x][y]);
+                System.out.print(arr[x][y] + " ,");
             }
         }
+
+
         for (int a = 0; a < arr[0].length; a++) {
             for (int b = 0; b < arr.length; b++) {
-                if (arr[b][a] == '*') {
-                    break;
+                if (arr[b][ordenat[a]] != 0) {
+                    sb.append(arr[b][ordenat[a]]);
                 }
-                sb.append(arr[b][a]);
             }
         }
+
+
+        //S'encarrega de pasar l'array a un string
+        //  for (int a = 0; a < ordenat.length; a++) {
+        //  for (int b = 0; b < arr.length; b++) {
+        //Condicional que fica els chars que no siguin el comodi.
+        //  if (arr[ordenat[a]][b] != 0) {
+        //sb.append(arr[ordenat[a]][b]);
+        // }
+        // }
+
+        // }
+
         System.out.println(sb);
+
+    }
+
+    static int[] index(String key) {
+
+        char[] ordenateKey = key.toCharArray();
+
+        int[] ordenateIndex = new int[key.length()];
+
+        Arrays.sort(ordenateKey);
+
+        int count = 0;
+        for (int i = 0; i < key.length(); i++) {
+            for (int j = 0; j < key.length(); j++) {
+                if (ordenateKey[i] == key.charAt(j)) {
+                    ordenateIndex[count] = j;
+                    count++;
+                }
+            }
+
+        }
+        return ordenateIndex;
     }
 
 }

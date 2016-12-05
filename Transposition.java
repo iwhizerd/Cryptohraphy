@@ -88,7 +88,7 @@ public class Transposition {
             files += 1;
         }
 
-        int ordenate[] = index(key);
+        int ordenat[] = index(key);
 
         char arr[][] = new char[files][key.length()];
 
@@ -108,21 +108,15 @@ public class Transposition {
         }
 
 
-        //S'encarrega de pasar l'array a un string
-        //  for (int a = 0; a < ordenate.length; a++) {
-        //    for (int b = 0; b < arr.length; b++) {
-                //Condicional que fica els chars que no siguin el comodi.
-        //      if (arr[ordenate[a]][b] != 0) {
-        //      sb.append(arr[ordenate[a]][b]);
-        //    }
-        //  }
-        // }
-
+        for (int i = 0; i < key.length(); i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[j][ordenat[i]] != 0) {
+                    sb.append(arr[j][ordenat[i]]);
+                }
+            }
+        }
 
         return sb.toString();
-
-
-
     }
 
     static String decypher(String s, String key) {

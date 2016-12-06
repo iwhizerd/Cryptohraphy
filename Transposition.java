@@ -125,6 +125,7 @@ public class Transposition {
 
     static int[] index(String key) {
 
+
         char[] ordenateKey = key.toCharArray();
 
         int[] ordenateIndex = new int[key.length()];
@@ -137,6 +138,7 @@ public class Transposition {
                 if (ordenateKey[i] == key.charAt(j)) {
                     ordenateIndex[count] = j;
                     count++;
+                    break;
                 }
             }
 

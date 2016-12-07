@@ -135,6 +135,7 @@ public class Transposition {
         int count = 0;
         for (int i = 0; i < key.length(); i++) {
             for (int j = 0; j < key.length(); j++) {
+
                 if (ordenateKey[i] == key.charAt(j)) {
                     ordenateIndex[count] = j;
                     count++;

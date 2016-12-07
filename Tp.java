@@ -84,6 +84,7 @@ public class Tp {
                 if (ordenateKey[i] == key.charAt(j)) {
                     ordenateIndex[count] = j;
                     count++;
+                    break;
                 }
             }
 

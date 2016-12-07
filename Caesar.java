@@ -7,6 +7,7 @@ public class Caesar {
         //El ficarem dins string Builder per poder modelarlo sense cap problema.
         sb.append(s.toUpperCase());
 
+        //Variable que és equivalent a el nombre de lletres.
         int nVocals = 26;
 
         //Farem una condicio per el delta.

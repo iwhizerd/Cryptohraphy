@@ -120,7 +120,44 @@ public class Transposition {
     }
 
     static String decypher(String s, String key) {
-        return null;
+
+        StringBuilder sb = new StringBuilder();
+
+        int files = s.length() / key.length();
+
+        if (s.length() % key.length() != 0) {
+            files += 1;
+        }
+
+        //int ordenat[] = desIndex(key);
+
+        int ordenat[] = index(key);
+
+        char arr[][] = new char[files][key.length()];
+
+        int posicio = 0;
+
+        int espaisbuits = (files * key.length()) - s.length();
+
+        for (int x = 0; x < arr[0].length; x++) {
+            for (int y = 0; y < arr.length; y++) {
+                //Condicional que fa que si arribam a la darrera fila i quan hagi un espai buit ho salti.
+                if (y == arr.length - 1 && ordenat[x] >= (key.length() - espaisbuits)) {
+                    // arr[y][x] = '*';
+                    continue;
+                }
+                arr[y][ordenat[x]] = s.charAt(posicio);
+                posicio++;
+            }
+        }
+        for (int a = 0; a < arr.length; a++) {
+            for (int b = 0; b < arr[0].length; b++) {
+                if (arr[a][b] != 0)
+                    sb.append(arr[a][b]);
+            }
+        }
+        return sb.toString();
+
     }
 
     static int[] index(String key) {
@@ -135,7 +172,7 @@ public class Transposition {
         int count = 0;
         for (int i = 0; i < key.length(); i++) {
             for (int j = 0; j < key.length(); j++) {
-                if (i > 0 && i < key.length()) {
+                if (i > 0) {
                     if (ordenateKey[i] == ordenateKey[(i - 1)]) {
                         int r = (ordenateIndex[(i - 1)] + 1);
                         for (int k = r; k < key.length() - 1; k++) {
@@ -158,5 +195,28 @@ public class Transposition {
         }
 
         return ordenateIndex;
+    }
+
+    static int[] desIndex(String key) {
+
+        char[] ordenateKey = key.toCharArray();
+
+        int[] ordenateIndex = new int[key.length()];
+
+        Arrays.sort(ordenateKey);
+
+        int count = 0;
+
+        for (int i = 0; i < key.length(); i++) {
+            for (int j = 0; j < key.length(); j++) {
+                if (key.charAt(i) == ordenateKey[j]) {
+                    ordenateIndex[count] = j;
+                    count++;
+                    break;
+                }
+            }
+        }
+        return ordenateIndex;
+
     }
 }

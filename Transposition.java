@@ -196,27 +196,4 @@ public class Transposition {
 
         return ordenateIndex;
     }
-
-    static int[] desIndex(String key) {
-
-        char[] ordenateKey = key.toCharArray();
-
-        int[] ordenateIndex = new int[key.length()];
-
-        Arrays.sort(ordenateKey);
-
-        int count = 0;
-
-        for (int i = 0; i < key.length(); i++) {
-            for (int j = 0; j < key.length(); j++) {
-                if (key.charAt(i) == ordenateKey[j]) {
-                    ordenateIndex[count] = j;
-                    count++;
-                    break;
-                }
-            }
-        }
-        return ordenateIndex;
-
-    }
 }
